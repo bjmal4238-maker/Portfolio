@@ -1,23 +1,15 @@
 /* --- استيراد الخط --- */
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 /* --- المتغيرات والألوان --- */
-
 :root {
     --bg-color: #1f242d;
-    /* لون الخلفية الغامق */
     --second-bg-color: #323946;
-    /* لون الخلفية الأفتح قليلاً */
     --text-color: #fff;
-    /* لون النصوص */
     --main-color: #0ef;
-    /* اللون اللبني النيون */
 }
 
-
 /* --- تصفير الإعدادات الأساسية --- */
-
 * {
     margin: 0;
     padding: 0;
@@ -32,11 +24,10 @@
 body {
     background: var(--bg-color);
     color: var(--text-color);
+    overflow-x: hidden; /* يمنع ظهور شريط تمرير بالعرض */
 }
 
-
 /* --- تنسيق الهيدر (Navbar) --- */
-
 header {
     position: fixed;
     top: 0;
@@ -49,6 +40,7 @@ header {
     align-items: center;
     z-index: 100;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: .3s;
 }
 
 .logo {
@@ -62,13 +54,9 @@ header {
     color: var(--main-color);
 }
 
-
-/* القائمة (اللينكات) */
-
 .nav-links {
     display: flex;
     list-style: none;
-    /* إخفاء النقاط */
 }
 
 .nav-links li {
@@ -87,12 +75,10 @@ header {
     color: var(--main-color);
 }
 
-
 /* --- تنسيق القسم الرئيسي (Hero Section) --- */
-
 section {
     min-height: 100vh;
-    padding: 10rem 9% 2rem;
+    padding: 10rem 9% 2rem; /* مسافات للكمبيوتر */
 }
 
 .hero {
@@ -130,9 +116,7 @@ section {
     line-height: 1.6;
 }
 
-
 /* أيقونات السوشيال ميديا */
-
 .social-icons a {
     display: inline-flex;
     justify-content: center;
@@ -154,9 +138,6 @@ section {
     box-shadow: 0 0 20px var(--main-color);
 }
 
-
-/* الأزرار */
-
 .btn {
     display: inline-block;
     padding: 0.8rem 2rem;
@@ -177,9 +158,7 @@ section {
     color: var(--main-color);
 }
 
-
 /* --- تنسيق صورة البروفايل --- */
-
 .hero-img {
     flex: 1;
     display: flex;
@@ -203,16 +182,13 @@ section {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* لضمان ملء الدائرة بالكامل */
 }
 
 .img-box:hover {
     box-shadow: 0 0 40px var(--main-color);
 }
 
-
-/* --- العناوين العامة للأقسام --- */
-
+/* --- العناوين العامة --- */
 .heading {
     text-align: center;
     font-size: 3rem;
@@ -223,219 +199,63 @@ section {
     color: var(--main-color);
 }
 
-
-/* --- قسم About --- */
-
-.about-content {
-    background: var(--second-bg-color);
-    padding: 2rem;
-    border-radius: 1rem;
-    text-align: center;
-}
-
-.education-box {
-    margin-top: 2rem;
-    text-align: left;
-}
-
-.education-box h3 {
-    color: var(--main-color);
-    margin-bottom: 1rem;
-}
-
-.education-box ul li {
-    list-style: none;
-    margin-bottom: 0.5rem;
-    font-size: 1.1rem;
-}
-
-
-/* --- قسم Skills --- */
-
-.skills-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-}
-
-.skill-card {
-    background: var(--second-bg-color);
-    padding: 2rem;
-    border-radius: 1rem;
-    text-align: center;
-    border: 1px solid transparent;
-    transition: 0.5s;
-}
-
-.skill-card:hover {
-    border-color: var(--main-color);
-    transform: scale(1.02);
-}
-
-.skill-card i {
-    font-size: 3rem;
-    color: var(--main-color);
-    margin-bottom: 1rem;
-}
-
-
-/* --- قسم Projects --- */
-
-.projects-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-}
-
+/* --- الأقسام (About, Skills, Projects) --- */
+.about-content, 
+.contact-form, 
+.skill-card, 
 .project-card {
     background: var(--second-bg-color);
-    border-radius: 1rem;
-    overflow: hidden;
     padding: 2rem;
+    border-radius: 1rem;
     text-align: center;
     transition: 0.5s;
 }
 
-.project-card:hover {
-    transform: translateY(-10px);
+.about-content { text-align: center; }
+.education-box { margin-top: 2rem; text-align: left; }
+.education-box h3 { color: var(--main-color); margin-bottom: 1rem; }
+.education-box ul li { list-style: none; margin-bottom: 0.5rem; font-size: 1.1rem; }
+
+/* Grid Systems */
+.skills-container, .projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* تحسين التجاوب */
+    gap: 2rem;
 }
 
-.project-info h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+.skill-card:hover, .project-card:hover {
+    border: 1px solid var(--main-color);
+    transform: translateY(-5px);
 }
 
-.tags span {
-    display: inline-block;
-    background: #000;
-    color: var(--main-color);
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 0.8rem;
-    margin: 5px;
-}
+.skill-card i { font-size: 3rem; color: var(--main-color); margin-bottom: 1rem; }
+.project-info h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+.tags span { display: inline-block; background: #000; color: var(--main-color); padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; margin: 5px; }
+.links { margin-top: 1.5rem; }
+.btn-small { display: inline-block; padding: 0.5rem 1.5rem; background: transparent; border: 2px solid var(--main-color); color: var(--main-color); border-radius: 2rem; font-weight: 600; transition: 0.3s; }
+.btn-small:hover { background: var(--main-color); color: var(--second-bg-color); }
 
-.links {
-    margin-top: 1.5rem;
-}
-
-.btn-small {
-    display: inline-block;
-    padding: 0.5rem 1.5rem;
-    background: transparent;
-    border: 2px solid var(--main-color);
-    color: var(--main-color);
-    border-radius: 2rem;
-    font-weight: 600;
-    transition: 0.3s;
-}
-
-.btn-small:hover {
-    background: var(--main-color);
-    color: var(--second-bg-color);
-}
-
-
-/* --- قسم Contact (التعديلات الجديدة) --- */
-
+/* --- قسم Contact --- */
 .contact-container {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    /* لضبط المحاذاة */
     gap: 3rem;
     flex-wrap: wrap;
 }
 
+.contact-info { flex: 1; max-width: 500px; }
+.contact-info h3 { font-size: 2rem; margin-bottom: 1rem; }
+.contact-info p { margin-bottom: 2rem; }
+.info-box .item { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+.info-box .item i { font-size: 1.2rem; color: var(--main-color); width: 45px; height: 45px; background: var(--second-bg-color); border-radius: 50%; display: flex; justify-content: center; align-items: center; }
 
-/* تنسيق معلومات الاتصال (يسار) */
+.contact-form { flex: 1; max-width: 600px; }
+.contact-form input, .contact-form textarea { width: 100%; padding: 1rem; font-size: 1rem; color: var(--text-color); background: var(--bg-color); border-radius: 0.5rem; margin-bottom: 1rem; }
+.contact-form input:focus, .contact-form textarea:focus { border: 1px solid var(--main-color); }
+.contact-form .btn { margin-top: 1rem; cursor: pointer; border: none; }
 
-.contact-info {
-    flex: 1;
-    max-width: 500px;
-}
-
-.contact-info h3 {
-    font-size: 2rem;
-    color: var(--text-color);
-    margin-bottom: 1rem;
-}
-
-.contact-info p {
-    font-size: 1rem;
-    margin-bottom: 2rem;
-    line-height: 1.6;
-}
-
-.info-box .item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-}
-
-.info-box .item i {
-    font-size: 1.2rem;
-    color: var(--main-color);
-    width: 45px;
-    height: 45px;
-    background: var(--second-bg-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    transition: 0.3s;
-}
-
-.info-box .item:hover i {
-    background: var(--main-color);
-    color: var(--second-bg-color);
-}
-
-.info-box .item span {
-    font-size: 1.1rem;
-}
-
-
-/* تنسيق نموذج الإرسال (يمين) */
-
-.contact-form {
-    flex: 1;
-    max-width: 600px;
-    background: var(--second-bg-color);
-    padding: 2rem;
-    border-radius: 1rem;
-    text-align: center;
-}
-
-.contact-form input,
-.contact-form textarea {
-    width: 100%;
-    padding: 1rem;
-    font-size: 1rem;
-    color: var(--text-color);
-    background: var(--bg-color);
-    /* لون أغمق للكتابة */
-    border-radius: 0.5rem;
-    margin-bottom: 1rem;
-    resize: none;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-    border: 1px solid var(--main-color);
-    /* برواز مضيء عند الكتابة */
-}
-
-.contact-form .btn {
-    cursor: pointer;
-    margin-top: 1rem;
-    border: none;
-}
-
-
-/* --- الفوتر Footer --- */
-
+/* Footer */
 footer {
     background: var(--second-bg-color);
     padding: 2rem 9%;
@@ -443,50 +263,75 @@ footer {
     margin-top: auto;
 }
 
-
-/* --- التوافق مع الموبايل (Responsive) --- */
+/* ========================================= */
+/* === ميديا كويري (تعديلات الموبايل) === */
+/* ========================================= */
 
 @media (max-width: 991px) {
-    header {
-        padding: 2rem 3%;
-    }
-    section {
-        padding: 10rem 3% 2rem;
-    }
+    /* للتابلت واللابتوب الصغير */
+    header { padding: 2rem 3%; }
+    section { padding: 10rem 3% 2rem; }
 }
 
 @media (max-width: 768px) {
+    /* للموبايلات */
+    
+    /* 1. تعديل الهيدر */
     header {
-        flex-direction: column;
-        padding-bottom: 1rem;
+        flex-direction: column; /* يخلي اللوجو فوق واللينكات تحت */
+        padding: 1rem 3%;
+        background: var(--second-bg-color); /* لون خلفية عشان يوضح */
     }
+
     .nav-links {
         margin-top: 1.5rem;
-        flex-wrap: wrap;
+        flex-wrap: wrap; /* يسمح للينكات تنزل سطر تاني لو المكان ضيق */
         justify-content: center;
+        width: 100%;
+        padding: 0;
     }
+
     .nav-links li {
-        margin: 0.5rem 1rem;
+        margin: 0.5rem 1rem; /* مسافات بين اللينكات */
     }
+
+    /* 2. تعديل القسم الرئيسي (Hero) */
     .hero {
-        flex-direction: column-reverse;
-        /* الصورة فوق والكلام تحت في الموبايل */
+        flex-direction: column-reverse; /* يعكس الترتيب: الصورة فوق والكلام تحت */
         text-align: center;
+        gap: 1rem;
+        padding-top: 8rem; /* يزود مسافة من فوق عشان الهيدر م يغطيش عليه */
     }
-    .hero-content {
-        align-items: center;
+
+    .hero-content h1 {
+        font-size: 2.2rem; /* تصغير الخط الكبير */
     }
+
+    .hero-content h3 {
+        font-size: 1.5rem;
+    }
+
     .img-box {
-        width: 250px;
+        width: 250px; /* تصغير الصورة شوية */
         height: 250px;
     }
+
+    /* 3. تعديل العناوين */
+    .heading {
+        font-size: 2.5rem;
+    }
+
+    /* 4. تعديل قسم التواصل */
     .contact-container {
         flex-direction: column;
     }
+    
     .contact-info {
         text-align: center;
+        margin-bottom: 2rem;
     }
+    
     .info-box .item {
-        justify-content: center;
+        justify-content: center; /* توسيط الأيقونات والكلام */
     }
 }
